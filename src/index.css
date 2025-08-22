@@ -16,3 +16,45 @@ body,
 .container-app {
   @apply mx-auto max-w-[var(--app-max-w)] px-4;
 }
+
+.ant-picker:hover,
+.ant-picker-focused {
+  border-color: rgb(252, 165, 165) !important; /* red-300 */
+}
+
+.ant-picker-ok .ant-btn {
+  background-color: rgb(252, 165, 165) !important;
+  border-color: rgb(252, 165, 165) !important;
+  color: white !important;
+}
+
+.ant-picker-ok .ant-btn:hover {
+  background-color: rgb(248 113 113) !important;
+  border-color: rgb(248 113 113) !important;
+}
+
+.ant-picker-ok .ant-btn:active {
+  background-color: rgb(239 68 68) !important;
+  border-color: rgb(239 68 68) !important;
+}
+
+/* 시간 선택 시 아래 파란줄(red-300) */
+.ant-picker-active-bar {
+  background-color: rgb(252, 165, 165) !important;
+}
+
+/* Ant Design TimePicker 선택된 시간 셀 배경색 변경 */
+.ant-picker-time-panel-column
+  > li.ant-picker-time-panel-cell-selected
+  .ant-picker-time-panel-cell-inner {
+  background-color: #ffeeee !important;
+  color: black !important; /* 글자색 필요에 따라 조정 */
+}
+
+.ant-picker-suffix {
+  color: #fca5a5 !important; /* Tailwind red-300 */
+}
+
+.ant-picker-clear {
+  color: #fca5a5 !important;
+}

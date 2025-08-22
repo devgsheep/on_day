@@ -1,4 +1,4 @@
-import React, { KeyboardEvent, useState } from 'react';
+import { KeyboardEvent, useState } from 'react';
 import { TodoType } from '../../types/todoType';
 type TodoItemProps = {
   todo: TodoType;
@@ -67,13 +67,13 @@ const TodoItem = ({
           <div className="flex items-center gap-2">
             <button
               onClick={handleEditSave}
-              className="min-w-12 border border-red-300 bg-red-300 rounded-md px-1.5 py-0.5 text-white hover:opacity-80 active:opacity-70"
+              className="min-w-12 border border-red-300 bg-red-300 rounded-md px-1.5 py-1 text-white hover:opacity-80 active:opacity-70"
             >
               저장
             </button>
             <button
               onClick={handleEditCancel}
-              className="min-w-12 border border-neutral-400 bg-neutral-400 rounded-md px-1.5 py-0.5 text-white hover:opacity-80 active:opacity-70"
+              className="min-w-12 border border-neutral-400 bg-neutral-400 rounded-md px-1.5 py-1 text-white hover:opacity-80 active:opacity-70"
             >
               취소
             </button>
@@ -87,6 +87,7 @@ const TodoItem = ({
             checked={todo.completed}
             className="min-h-3.5 min-w-3.5 max-h-3.5 max-w-3.5 accent-neutral-500"
           />
+
           <span
             className={[
               'flex-1 whitespace-nowrap overflow-hidden text-ellipsis',
@@ -98,13 +99,13 @@ const TodoItem = ({
           <div className="flex items-center gap-2">
             <button
               onClick={handleEdit}
-              className="min-w-12 border border-red-300 bg-red-300 rounded-md px-1.5 py-0.5 text-white hover:opacity-80 active:opacity-70"
+              className="min-w-12 border border-red-300 bg-red-300 rounded-md px-1.5 py-1 text-white hover:opacity-80 active:opacity-70"
             >
               수정
             </button>
             <button
               onClick={handleDelete}
-              className="min-w-12 border border-neutral-400 bg-neutral-400 rounded-md px-1.5 py-0.5 text-white hover:opacity-80 active:opacity-70"
+              className="min-w-12 border border-neutral-400 bg-neutral-400 rounded-md px-1.5 py-1 text-white hover:opacity-80 active:opacity-70"
             >
               삭제
             </button>
