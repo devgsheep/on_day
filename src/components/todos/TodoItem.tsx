@@ -89,37 +89,43 @@ const TodoItem = ({
           </div>
         </>
       ) : (
-        <div className="flex w-full items-center justify-between gap-3">
-          <input
-            type="checkbox"
-            onChange={() => onToggle(todo.id)}
-            checked={todo.completed}
-            className="min-h-3.5 min-w-3.5 max-h-3.5 max-w-3.5 accent-neutral-500"
-          />
-          <div className="border border-red-100 rounded-lg px-3 py-1">
-            {todo.startTimeStr} - {todo.endTimeStr}
+        <div className="flex w-full items-center gap-3 flex-wrap">
+          <div>
+            <div className="border flex flex-col border-red-100 rounded-lg px-3 py-1">
+              {todo.startTimeStr} - {todo.endTimeStr}
+            </div>
           </div>
-          <span
-            className={[
-              'flex-1 whitespace-nowrap overflow-hidden text-ellipsis',
-              todo.completed ? 'text-neutral-400 line-through' : 'text-neutral-700',
-            ].join(' ')}
-          >
-            {todo.title}
-          </span>
-          <div className="flex items-center gap-2">
-            <button
-              onClick={handleEdit}
-              className="min-w-12 border border-red-300 bg-red-300 rounded-md px-1.5 py-1 text-white hover:opacity-80 active:opacity-70"
-            >
-              수정
-            </button>
-            <button
-              onClick={handleDelete}
-              className="min-w-12 border border-neutral-400 bg-neutral-400 rounded-md px-1.5 py-1 text-white hover:opacity-80 active:opacity-70"
-            >
-              삭제
-            </button>
+          <div className="flex w-full items-center justify-between gap-2">
+            <input
+              type="checkbox"
+              onChange={() => onToggle(todo.id)}
+              checked={todo.completed}
+              className="min-h-3.5 min-w-3.5 max-h-3.5 max-w-3.5 accent-neutral-500"
+            />
+            <div className="flex-1 rounded-lg border border-neutral-300 bg-white px-3 py-2 outline-none">
+              <span
+                className={[
+                  'flex-1 whitespace-nowrap overflow-hidden text-ellipsis',
+                  todo.completed ? 'text-neutral-400 line-through' : 'text-neutral-700',
+                ].join(' ')}
+              >
+                {todo.title}
+              </span>
+            </div>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={handleEdit}
+                className="min-w-12 border border-red-300 bg-red-300 rounded-md px-1.5 py-1 text-white hover:opacity-80 active:opacity-70"
+              >
+                수정
+              </button>
+              <button
+                onClick={handleDelete}
+                className="min-w-12 border border-neutral-400 bg-neutral-400 rounded-md px-1.5 py-1 text-white hover:opacity-80 active:opacity-70"
+              >
+                삭제
+              </button>
+            </div>
           </div>
         </div>
       )}
