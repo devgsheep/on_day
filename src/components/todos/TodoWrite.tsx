@@ -1,8 +1,8 @@
-import React, { ChangeEvent, KeyboardEvent, useState } from 'react';
+import { TimePicker } from 'antd';
+import { Dayjs } from 'dayjs';
+import { ChangeEvent, KeyboardEvent, useState } from 'react';
 import { TodoType } from '../../types/todoType';
-import { ConfigProvider, TimePicker } from 'antd';
-import { endTime, format, startTime } from '../ui/TimePicker';
-import dayjs, { Dayjs } from 'dayjs';
+import { format } from '../ui/TimePicker';
 
 type TodoWriteType = {
   handleTodoUpdate: (newTodo: TodoType) => void;
@@ -42,6 +42,8 @@ const TodoWrite = ({ handleTodoUpdate }: TodoWriteType) => {
         completed: false,
         startTime: time[0],
         endTime: time[1],
+        startTimeStr: time[0].format(format),
+        endTimeStr: time[1].format(format),
       };
       handleTodoUpdate(newTodo);
       setTitle('');
@@ -55,7 +57,7 @@ const TodoWrite = ({ handleTodoUpdate }: TodoWriteType) => {
     <div className="flex items-center gap-2">
       <TimePicker.RangePicker
         format={format}
-        className="w-36 py-2 rounded-lg border-red-100 bg-white px-3 focus:!outline-none focus:!border-red-300"
+        className="min-w-36 max-w-36 py-2 rounded-lg border-red-100 bg-white px-3 focus:!outline-none focus:!border-red-300"
         value={time}
         onChange={handleTimeChange}
       />
@@ -68,7 +70,7 @@ const TodoWrite = ({ handleTodoUpdate }: TodoWriteType) => {
       />
       <button
         onClick={handleAdd}
-        className={`rounded-lg border px-3 py-2 text-white transition-all duration-200 ${
+        className={`rounded-lg border px-2.5 py-2 text-white transition-all duration-200 ${
           isButtonDisabled
             ? 'border-gray-300 bg-gray-300 cursor-not-allowed opacity-50 pointer-events-none'
             : 'border-red-300 bg-red-300 hover:opacity-80 active:opacity-70 cursor-pointer'

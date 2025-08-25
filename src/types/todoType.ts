@@ -6,4 +6,6 @@ export type TodoType = {
   completed: boolean;
   startTime?: Dayjs;
   endTime?: Dayjs;
+  startTimeStr?: string;
+  endTimeStr?: string;
 };

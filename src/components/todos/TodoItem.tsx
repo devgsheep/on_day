@@ -1,4 +1,4 @@
-import { KeyboardEvent, useState } from 'react';
+import { KeyboardEvent, useEffect, useRef, useState } from 'react';
 import { TodoType } from '../../types/todoType';
 type TodoItemProps = {
   todo: TodoType;
@@ -20,6 +20,14 @@ const TodoItem = ({
   getCancel,
 }: TodoItemProps) => {
   const [editTitle, setEditTitle] = useState<string>(todo.title);
+
+  const edits = isEdit;
+  const inputRef = useRef<HTMLInputElement>(null);
+  useEffect(() => {
+    if (edits && inputRef.current) {
+      inputRef.current.focus();
+    }
+  });
 
   const handleEdit = () => {
     getEdit(todo.id);
@@ -58,11 +66,12 @@ const TodoItem = ({
       {isEdit ? (
         <>
           <input
+            ref={inputRef}
             type="text"
             value={editTitle}
             onChange={e => setEditTitle(e.target.value)}
             onKeyDown={handleKeyDown}
-            className="flex-1 rounded-lg border bg-white px-3 py-2 outline-none focus:ring-1 focus:ring-red-300"
+            className="flex-1 rounded-lg border border-none bg-red-50 px-3 py-2 outline-none"
           />
           <div className="flex items-center gap-2">
             <button
@@ -87,7 +96,9 @@ const TodoItem = ({
             checked={todo.completed}
             className="min-h-3.5 min-w-3.5 max-h-3.5 max-w-3.5 accent-neutral-500"
           />
-
+          <div className="border border-red-100 rounded-lg px-3 py-1">
+            {todo.startTimeStr} - {todo.endTimeStr}
+          </div>
           <span
             className={[
               'flex-1 whitespace-nowrap overflow-hidden text-ellipsis',
