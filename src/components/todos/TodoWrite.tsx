@@ -54,7 +54,7 @@ const TodoWrite = ({ handleTodoUpdate }: TodoWriteType) => {
   const isButtonDisabled = !title.trim() || !time[0] || !time[1];
 
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex w-full items-center gap-2 flex-wrap">
       <TimePicker.RangePicker
         format={format}
         className="min-w-36 max-w-36 py-2 rounded-lg border-red-100 bg-white px-3 focus:!outline-none focus:!border-red-300"
@@ -70,7 +70,7 @@ const TodoWrite = ({ handleTodoUpdate }: TodoWriteType) => {
       />
       <button
         onClick={handleAdd}
-        className={`rounded-lg border px-2.5 py-2 text-white transition-all duration-200 ${
+        className={`rounded-lg shrink-0 border px-2.5 py-2 text-white transition-all duration-200 ${
           isButtonDisabled
             ? 'border-gray-300 bg-gray-300 cursor-not-allowed opacity-50 pointer-events-none'
             : 'border-red-300 bg-red-300 hover:opacity-80 active:opacity-70 cursor-pointer'
